@@ -1,0 +1,28 @@
+namespace MySpace
+{
+    public class MyClass : IMyClass
+    {
+
+    }
+    
+    public interface IMyClass
+    {
+
+    }
+}
+
+namespace MySpace3
+{
+    public class MyClass2 : IMyClass2
+    {
+
+    }
+}
+
+namespace MySpace2
+{       
+    public interface IMyClass2
+    {
+
+    }
+}
