@@ -1,0 +1,26 @@
+namespace MySpace
+{
+    public class MyClass : IMyClass
+    {
+
+    }
+    
+    public interface IMyClass
+    {
+
+    }
+}
+
+namespace MySpace2
+{
+    public class MyClass2 : IMyClass2
+    {
+
+    }
+
+    [IgnoreDynalmicGenerated]       
+    public interface IMyClass2
+    {
+
+    }
+}

@@ -1,6 +1,8 @@
 using System.Collections.Immutable;
 using System.Linq;
+using System.Reflection;
 using CB.DIRegisterGenerator.Helper;
+using CB.EmbeddedResourceHelper;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
@@ -44,18 +46,11 @@ namespace CB.DIRegisterGenerator
 
             var typesForInterfaces = SyntaxHelper.GetRegisterTypes<TypeDeclarationSyntax>(typeDeclarationSyntax);
 
-            var template = ResourceHelper.GetEmbeddedFile("DependecyRegisterTemplateFile.txt");
+            var assembly = Assembly.GetAssembly(typeof(DIRegisterGenerator));
+            var template = assembly.ReadAllTextFromEmbeddedFile("DependecyRegisterTemplateFile.txt");
             template = TemplateHelper.FillTemplate(interfaces, typesForInterfaces, template);
             sourceProductionContext.AddSource($"DependencyInjection.g.cs", template);
         }
         
-    }
-
-    public struct RegisterType
-    {
-        public string Name { get; set; }
-        public string Namespace { get; set; }
-
-        public string BaseTypeName { get; set; }
     }
 }
